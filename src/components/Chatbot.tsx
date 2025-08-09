@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
-// import { Textarea } from './ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 export const Chatbot: React.FC = () => {
@@ -78,126 +77,249 @@ export const Chatbot: React.FC = () => {
     return (
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 w-16 h-16 rounded-full shadow-lg hover:shadow-xl transition-shadow z-50"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-lg hover:shadow-xl transition-shadow z-50"
         size="lg"
       >
-        <span className="text-lg">💬</span>
+        <span className="text-base sm:text-lg">💬</span>
       </Button>
     );
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-96 h-[500px] z-50">
-      <Card className="w-full h-full flex flex-col shadow-2xl">
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 bg-primary text-primary-foreground">
-          <CardTitle className="text-lg">6axis AI Assistant</CardTitle>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setIsOpen(false)}
-            className="text-primary-foreground hover:text-primary-foreground/80"
-          >
-            ✕
-          </Button>
-        </CardHeader>
-
-        <CardContent className="flex-1 flex flex-col p-0">
-          {step === 0 && (
-            <div className="p-6 flex-1 flex flex-col justify-center">
-              <div className="text-center mb-6">
-                <h3 className="font-medium mb-2">Welcome to 6axis Studios!</h3>
-                <p className="text-sm text-gray-600">
-                  I'm your AI assistant. I can help answer questions about our services, projects, and more.
-                </p>
-              </div>
-              <Button onClick={() => setStep(1)} className="w-full">
-                Start Chat
+    <>
+      {/* Mobile Overlay */}
+      <div className={`fixed inset-0 z-50 transition-opacity duration-300 sm:hidden ${
+        isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      }`}>
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
+        
+        <div className="absolute inset-x-4 top-4 bottom-4 flex flex-col">
+          <Card className="w-full h-full flex flex-col shadow-2xl">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 bg-primary text-primary-foreground flex-shrink-0">
+              <CardTitle className="text-lg">6axis AI Assistant</CardTitle>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsOpen(false)}
+                className="text-primary-foreground hover:text-primary-foreground/80"
+              >
+                ✕
               </Button>
-            </div>
-          )}
+            </CardHeader>
 
-          {step === 1 && (
-            <div className="p-6 flex-1">
-              <h3 className="font-medium mb-4">Let's get to know you!</h3>
-              <form onSubmit={handleInfoSubmit} className="space-y-4">
-                <div>
-                  <Label htmlFor="chat-name">Name *</Label>
-                  <Input
-                    id="chat-name"
-                    type="text"
-                    required
-                    value={userInfo.name}
-                    onChange={(e) => handleInfoChange('name', e.target.value)}
-                    className="mt-1"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="chat-email">Email *</Label>
-                  <Input
-                    id="chat-email"
-                    type="email"
-                    required
-                    value={userInfo.email}
-                    onChange={(e) => handleInfoChange('email', e.target.value)}
-                    className="mt-1"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="chat-phone">Phone Number</Label>
-                  <Input
-                    id="chat-phone"
-                    type="tel"
-                    value={userInfo.phone}
-                    onChange={(e) => handleInfoChange('phone', e.target.value)}
-                    className="mt-1"
-                  />
-                </div>
-                <Button type="submit" className="w-full">
-                  Continue
-                </Button>
-              </form>
-            </div>
-          )}
-
-          {step === 2 && (
-            <>
-              <div className="flex-1 p-4 overflow-y-auto space-y-3">
-                {messages.map((message) => (
-                  <div
-                    key={message.id}
-                    className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-                  >
-                    <div
-                      className={`max-w-[80%] p-3 rounded-lg text-sm ${
-                        message.sender === 'user'
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-gray-100 text-gray-900'
-                      }`}
-                    >
-                      {message.text}
-                    </div>
+            <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
+              {step === 0 && (
+                <div className="p-6 flex-1 flex flex-col justify-center">
+                  <div className="text-center mb-6">
+                    <h3 className="font-medium mb-2">Welcome to 6axis Studios!</h3>
+                    <p className="text-sm text-gray-600">
+                      I'm your AI assistant. I can help answer questions about our services, projects, and more.
+                    </p>
                   </div>
-                ))}
-              </div>
-              
-              <form onSubmit={handleSendMessage} className="p-4 border-t">
-                <div className="flex gap-2">
-                  <Input
-                    type="text"
-                    placeholder="Type your message..."
-                    value={currentMessage}
-                    onChange={(e) => setCurrentMessage(e.target.value)}
-                    className="flex-1"
-                  />
-                  <Button type="submit" size="sm">
-                    Send
+                  <Button onClick={() => setStep(1)} className="w-full">
+                    Start Chat
                   </Button>
                 </div>
-              </form>
-            </>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+              )}
+
+              {step === 1 && (
+                <div className="p-6 flex-1 overflow-y-auto">
+                  <h3 className="font-medium mb-4">Let's get to know you!</h3>
+                  <form onSubmit={handleInfoSubmit} className="space-y-4">
+                    <div>
+                      <Label htmlFor="chat-name">Name *</Label>
+                      <Input
+                        id="chat-name"
+                        type="text"
+                        required
+                        value={userInfo.name}
+                        onChange={(e) => handleInfoChange('name', e.target.value)}
+                        className="mt-1"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="chat-email">Email *</Label>
+                      <Input
+                        id="chat-email"
+                        type="email"
+                        required
+                        value={userInfo.email}
+                        onChange={(e) => handleInfoChange('email', e.target.value)}
+                        className="mt-1"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="chat-phone">Phone Number</Label>
+                      <Input
+                        id="chat-phone"
+                        type="tel"
+                        value={userInfo.phone}
+                        onChange={(e) => handleInfoChange('phone', e.target.value)}
+                        className="mt-1"
+                      />
+                    </div>
+                    <Button type="submit" className="w-full">
+                      Continue
+                    </Button>
+                  </form>
+                </div>
+              )}
+
+              {step === 2 && (
+                <>
+                  <div className="flex-1 p-4 overflow-y-auto space-y-3">
+                    {messages.map((message) => (
+                      <div
+                        key={message.id}
+                        className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                      >
+                        <div
+                          className={`max-w-[80%] p-3 rounded-lg text-sm ${
+                            message.sender === 'user'
+                              ? 'bg-primary text-primary-foreground'
+                              : 'bg-gray-100 text-gray-900'
+                          }`}
+                        >
+                          {message.text}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <form onSubmit={handleSendMessage} className="p-4 border-t flex-shrink-0">
+                    <div className="flex gap-2">
+                      <Input
+                        type="text"
+                        placeholder="Type your message..."
+                        value={currentMessage}
+                        onChange={(e) => setCurrentMessage(e.target.value)}
+                        className="flex-1"
+                      />
+                      <Button type="submit" size="sm">
+                        Send
+                      </Button>
+                    </div>
+                  </form>
+                </>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Desktop View */}
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-80 sm:w-96 h-[400px] sm:h-[500px] z-50 hidden sm:block">
+        <Card className="w-full h-full flex flex-col shadow-2xl">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 bg-primary text-primary-foreground flex-shrink-0">
+            <CardTitle className="text-lg">6axis AI Assistant</CardTitle>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(false)}
+              className="text-primary-foreground hover:text-primary-foreground/80"
+            >
+              ✕
+            </Button>
+          </CardHeader>
+
+          <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
+            {step === 0 && (
+              <div className="p-6 flex-1 flex flex-col justify-center">
+                <div className="text-center mb-6">
+                  <h3 className="font-medium mb-2">Welcome to 6axis Studios!</h3>
+                  <p className="text-sm text-gray-600">
+                    I'm your AI assistant. I can help answer questions about our services, projects, and more.
+                  </p>
+                </div>
+                <Button onClick={() => setStep(1)} className="w-full">
+                  Start Chat
+                </Button>
+              </div>
+            )}
+
+            {step === 1 && (
+              <div className="p-6 flex-1 overflow-y-auto">
+                <h3 className="font-medium mb-4">Let's get to know you!</h3>
+                <form onSubmit={handleInfoSubmit} className="space-y-4">
+                  <div>
+                    <Label htmlFor="chat-name-desktop">Name *</Label>
+                    <Input
+                      id="chat-name-desktop"
+                      type="text"
+                      required
+                      value={userInfo.name}
+                      onChange={(e) => handleInfoChange('name', e.target.value)}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="chat-email-desktop">Email *</Label>
+                    <Input
+                      id="chat-email-desktop"
+                      type="email"
+                      required
+                      value={userInfo.email}
+                      onChange={(e) => handleInfoChange('email', e.target.value)}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="chat-phone-desktop">Phone Number</Label>
+                    <Input
+                      id="chat-phone-desktop"
+                      type="tel"
+                      value={userInfo.phone}
+                      onChange={(e) => handleInfoChange('phone', e.target.value)}
+                      className="mt-1"
+                    />
+                  </div>
+                  <Button type="submit" className="w-full">
+                    Continue
+                  </Button>
+                </form>
+              </div>
+            )}
+
+            {step === 2 && (
+              <>
+                <div className="flex-1 p-4 overflow-y-auto space-y-3">
+                  {messages.map((message) => (
+                    <div
+                      key={message.id}
+                      className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                    >
+                      <div
+                        className={`max-w-[80%] p-3 rounded-lg text-sm ${
+                          message.sender === 'user'
+                            ? 'bg-primary text-primary-foreground'
+                            : 'bg-gray-100 text-gray-900'
+                        }`}
+                      >
+                        {message.text}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <form onSubmit={handleSendMessage} className="p-4 border-t flex-shrink-0">
+                  <div className="flex gap-2">
+                    <Input
+                      type="text"
+                      placeholder="Type your message..."
+                      value={currentMessage}
+                      onChange={(e) => setCurrentMessage(e.target.value)}
+                      className="flex-1"
+                    />
+                    <Button type="submit" size="sm">
+                      Send
+                    </Button>
+                  </div>
+                </form>
+              </>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    </>
   );
 };
