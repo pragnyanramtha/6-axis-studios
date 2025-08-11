@@ -8,282 +8,372 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ onPageChange }) => {
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1920"
-            alt="Modern architecture"
-            className="w-full h-full object-cover opacity-20"
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            alt="Bright modern living space"
+            className="w-full h-full object-cover"
           />
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
-        
-        {/* Geometric Elements - Hidden on mobile for cleaner look */}
-        <div className="absolute inset-0 pointer-events-none hidden sm:block">
-          <div className="absolute top-20 left-20 w-32 h-32 border-2 border-primary/20 rotate-45 animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-24 h-24 border border-primary/10 rotate-12"></div>
-          <div className="absolute top-1/2 left-10 w-16 h-16 bg-primary/5 rotate-45"></div>
-          <div className="absolute top-1/3 right-1/4 w-20 h-20 border border-primary/10 -rotate-12"></div>
-        </div>
-        
-        <div className="relative z-10 text-center max-w-6xl mx-auto px-4 sm:px-6">
-          {/* Main Logo - Responsive sizing that shrinks if screen is too small */}
-          <div className="mb-8 sm:mb-12 md:mb-16 flex justify-center">
-            <img 
-              src="https://images.pexels.com/photos/33361856/pexels-photo-33361856.png" 
-              alt="Six Axis Studios - Design Beyond Dimensions" 
-              className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto max-w-full opacity-90 hover:opacity-100 transition-opacity duration-500"
-            />
+
+        {/* Text Overlay */}
+        <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-6xl mx-auto">
+          {/* Trust Bar - Top */}
+          <div className="flex flex-wrap items-center justify-center gap-8 text-sm mb-8 opacity-90">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-accent rounded-full"></span>
+              <span>20+ custom projects</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-accent rounded-full"></span>
+              <span>100% client satisfaction</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-accent rounded-full"></span>
+              <span>Serving Hyderabad & beyond</span>
+            </div>
           </div>
-          
-          <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
-            Architecture and interiors crafted with precision, purpose, and emotional resonance.
+
+          {/* Main Headline */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-tight tracking-tight">
+            From Empty Rooms to<br />
+            <span className="text-accent">Extraordinary Spaces</span> —<br />
+            Designed Around You
+          </h1>
+
+          {/* Subheadline */}
+          <p className="text-lg sm:text-xl md:text-2xl mb-12 leading-relaxed max-w-4xl mx-auto opacity-90">
+            Architecture and interiors that blend beauty, function, and emotion —
+            turning every square foot into a space you love to live in.
           </p>
-          
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-medium px-2">
-            We don't just design spaces — we engineer experiences, tuned to your lifestyle, climate, and context.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4">
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <Button 
               size="lg" 
-              className="px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-semibold bg-primary text-white hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+              className="w-full sm:w-auto text-lg px-8 py-4 bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => onPageChange('Contact')}
             >
-              Book a Discovery Call
+              Book Your Free Design Consultation
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105"
+            <button 
+              className="text-white hover:text-accent transition-colors duration-300 underline text-lg"
               onClick={() => onPageChange('Process')}
             >
-              Explore Our Process
-            </Button>
+              Learn How We Work →
+            </button>
           </div>
         </div>
 
-        {/* Scroll Indicator - Hidden on mobile */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-primary animate-bounce hidden sm:block">
-          <div className="flex flex-col items-center space-y-2">
-            <div className="text-sm font-medium tracking-widest">SCROLL</div>
-            <div className="w-0.5 h-8 bg-primary"></div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/50 rounded-full mt-2"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Teaser */}
+      <section className="py-8 bg-background border-b border-border">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <span className="font-medium text-primary">Featured in</span>
+              <span>Local Architecture Magazine</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="font-medium text-primary">Trusted by</span>
+              <span>20+ homeowners</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="font-medium text-primary">Rated</span>
+              <span>5/5 by clients</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-16 sm:py-24 md:py-32 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-3 grid-pattern"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 md:gap-20 items-center">
-            <div className="relative order-2 lg:order-1">
-              <div className="absolute -top-4 -left-4 sm:-top-8 sm:-left-8 w-16 h-16 sm:w-24 sm:h-24 border-2 sm:border-4 border-gray-200 rotate-45 hidden sm:block"></div>
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800"
-                alt="Interior design process"
-                className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute -bottom-4 -right-4 sm:-bottom-8 sm:-right-8 w-16 h-16 sm:w-32 sm:h-32 bg-gray-100 rounded-full blur-xl hidden sm:block"></div>
-            </div>
+      <section className="py-20 bg-gradient-to-br from-secondary/10 to-background">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
-            <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
-              <div className="text-base sm:text-lg text-gray-500 font-semibold tracking-widest uppercase">
-                Our Philosophy
-              </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary leading-tight">
-                Design with
-                <span className="text-gray-600 block">Intention</span>
+            {/* Left Side - Image */}
+            <div className="order-2 lg:order-1">
+              <ImageWithFallback
+                src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Beautifully designed interior space"
+                className="w-full h-[400px] object-cover rounded-lg shadow-xl"
+              />
+            </div>
+
+            {/* Right Side - Content */}
+            <div className="order-1 lg:order-2 space-y-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-primary">
+                Design That Works as Beautifully as It Looks
               </h2>
-              <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-gray-700 leading-relaxed">
-                <p>
-                  At our studio, we believe great interiors begin with <strong className="text-primary">intention</strong>, not just aesthetics. 
-                  We don't just match cushions to curtains — we craft spaces that reflect your lifestyle, 
-                  solve everyday problems, and feel truly yours.
-                </p>
-                <p>
-                  Our design process goes deeper than surface beauty — it's about creating layouts, flow, 
-                  and functionality that improve how you live in your home. Once that's done, the decor 
-                  follows naturally.
-                </p>
+              
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Every space tells a story. We listen to yours and translate it into designs 
+                that not only look beautiful but feel authentic to who you are.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-accent rounded-full mt-3"></div>
+                  <div>
+                    <h4 className="font-medium text-primary">Space Optimisation</h4>
+                    <p className="text-muted-foreground">Make the most of every inch.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-accent rounded-full mt-3"></div>
+                  <div>
+                    <h4 className="font-medium text-primary">Lifestyle Fit</h4>
+                    <p className="text-muted-foreground">Designs tailored to how you live.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-accent rounded-full mt-3"></div>
+                  <div>
+                    <h4 className="font-medium text-primary">Future-Proof</h4>
+                    <p className="text-muted-foreground">Timeless style that lasts years, not seasons.</p>
+                  </div>
+                </div>
               </div>
-              <Button 
-                onClick={() => onPageChange('About')}
-                className="bg-primary hover:bg-gray-800 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105"
-              >
-                Meet the Founder →
-              </Button>
+
+              <div className="pt-4">
+                <button 
+                  className="text-primary hover:text-accent transition-colors duration-300 underline"
+                  onClick={() => onPageChange('About')}
+                >
+                  Meet the Founder →
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="py-16 sm:py-24 md:py-32 bg-gray-50">
+      {/* Services Section */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 sm:mb-16 md:mb-20">
-            <div className="text-base sm:text-lg text-gray-500 font-semibold tracking-widest uppercase mb-4">
-              What We Do
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary mb-4 sm:mb-6">
-              Limited Projects, <span className="text-gray-600">Complete Focus</span>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-primary mb-6">
+              From First Sketch to Final Cushion — We Handle It All
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-2">
-              We take up limited projects so each one receives complete focus and attention.
-            </p>
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 title: "Architectural Design",
-                description: "Context-sensitive residential and boutique commercial spaces.",
-                icon: "🏗️"
+                description: "Context-driven designs for residential & boutique commercial spaces.",
+                image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
               },
               {
                 title: "Interior Design",
-                description: "Lifestyle-based, budget-aligned custom interiors.",
-                icon: "🎨"
+                description: "Lifestyle-based, budget-aligned, visually stunning.",
+                image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                badge: "Most Popular"
               },
               {
                 title: "Home Renovation",
-                description: "Reviving spaces without losing their soul.",
-                icon: "🔨"
+                description: "Refresh your space without losing its soul.",
+                image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
               },
               {
                 title: "Design Consultation",
-                description: "1:1 advice for design dilemmas or planning.",
-                icon: "💡"
+                description: "1:1 advice for design dilemmas.",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
               }
             ].map((service, index) => (
-              <div key={index} className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 group">
-                <div className="text-3xl sm:text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
+              <div key={index} className="group relative bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                   onClick={() => onPageChange('Services')}>
+                {service.badge && (
+                  <div className="absolute top-4 left-4 z-10 bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-medium">
+                    {service.badge}
+                  </div>
+                )}
+                <div className="h-48 overflow-hidden">
+                  <ImageWithFallback
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-primary mb-4">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{service.description}</p>
+                <div className="p-6">
+                  <h3 className="text-xl font-medium text-primary mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground">{service.description}</p>
+                </div>
               </div>
             ))}
           </div>
-          
-          <div className="text-center mt-8 sm:mt-12">
+
+          <div className="text-center mt-12">
             <Button 
-              onClick={() => onPageChange('Services')}
-              variant="outline"
-              size="lg"
-              className="px-6 sm:px-8 py-3"
+              size="lg" 
+              className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground"
+              onClick={() => onPageChange('Process')}
             >
-              View All Services
+              View Our Process →
             </Button>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 sm:py-24 md:py-32 bg-white">
+      <section className="py-20 bg-gradient-to-br from-secondary/10 to-background">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 sm:mb-16 md:mb-20">
-            <div className="text-base sm:text-lg text-gray-500 font-semibold tracking-widest uppercase mb-4">
-              Client Words
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary mb-6">
-              What Our Clients Say
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-primary mb-6">
+              Real Clients. Real Results. Real Love.
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                quote: "We didn't expect an architect to care this much. Kalyan gave our small house more attention than most would give a villa.",
-                client: "Ravi & Sunitha",
-                location: "Hyderabad"
+                quote: "Six Axis Studios transformed our cramped apartment into a spacious, beautiful home. Every corner now serves a purpose.",
+                name: "Priya Sharma",
+                location: "Jubilee Hills, HYD",
+                project: "2BHK Apartment Renovation",
+                rating: 5
               },
               {
-                quote: "He explained everything. Every line had a reason. That gave us trust and clarity in the whole process.",
-                client: "Meghana A.",
-                location: "NRI client"
+                quote: "The team understood our lifestyle perfectly. Our home office is now both functional and inspiring.",
+                name: "Rajesh Kumar",
+                location: "Gachibowli, HYD",
+                project: "Home Office Design",
+                rating: 5
               },
               {
-                quote: "He even followed up months after we moved in. That's rare.",
-                client: "Sameer R.",
-                location: "Renovation Client"
+                quote: "From concept to completion, the process was seamless. We couldn't be happier with our new space.",
+                name: "Anita Reddy",
+                location: "Banjara Hills, HYD",
+                project: "Villa Interior Design",
+                rating: 5
               }
             ].map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 p-6 sm:p-8 rounded-2xl">
-                <div className="text-3xl sm:text-4xl text-primary mb-4">"</div>
-                <p className="text-base sm:text-lg text-gray-700 mb-6 italic leading-relaxed">
-                  {testimonial.quote}
-                </p>
-                <div className="border-t border-gray-200 pt-4">
-                  <div className="font-semibold text-primary">{testimonial.client}</div>
-                  <div className="text-sm text-gray-500">{testimonial.location}</div>
+              <div key={index} className="bg-card p-6 rounded-lg shadow-lg">
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} className="text-accent text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-muted-foreground italic mb-6">"{testimonial.quote}"</p>
+                <div className="border-t pt-4">
+                  <p className="font-medium text-primary">{testimonial.name}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                  <p className="text-sm text-accent">{testimonial.project}</p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Insights Preview */}
-      <section className="py-16 sm:py-24 md:py-32 bg-primary text-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 sm:mb-16 md:mb-20">
-            <div className="text-base sm:text-lg text-gray-300 font-semibold tracking-widest uppercase mb-4">
-              From Sketch to Soul
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6">
-              Our Journal
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto px-2">
-              Insights and thoughts from our design practice.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-lg sm:text-xl font-bold mb-4">Why size isn't everything</h3>
-              <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                Designing for flow, not footage — how smart planning makes small spaces feel larger.
-              </p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300">
-              <h3 className="text-lg sm:text-xl font-bold mb-4">Common Design Mistakes</h3>
-              <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                Design mistakes homeowners often make before calling an architect.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section className="py-16 sm:py-24 md:py-32 bg-gradient-to-br from-gray-50 to-white">
-        <div className="container mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary mb-6">
-            Ready to Start Your
-            <span className="text-gray-600 block">Design Journey?</span>
-          </h2>
-          <p className="text-lg sm:text-xl text-gray-700 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2">
-            Every project is a collaboration. And every inch matters.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-            <Button 
-              size="lg" 
-              className="px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-semibold bg-primary text-white hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+          <div className="text-center mt-12">
+            <button 
+              className="text-primary hover:text-accent transition-colors duration-300 underline"
               onClick={() => onPageChange('Contact')}
             >
-              Book Discovery Call
-            </Button>
+              See More Projects →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section Preview */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-primary mb-6">
+              Here's How It Works
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Discovery Call",
+                description: "We understand your space & needs."
+              },
+              {
+                step: "02",
+                title: "Design Blueprint",
+                description: "Your custom plan with visuals."
+              },
+              {
+                step: "03",
+                title: "Execution",
+                description: "Seamless coordination & build."
+              },
+              {
+                step: "04",
+                title: "Final Reveal",
+                description: "A space that feels yours."
+              }
+            ].map((process, index) => (
+              <div key={index} className="text-center space-y-4">
+                <div className="w-16 h-16 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-xl font-medium mx-auto">
+                  {process.step}
+                </div>
+                <h3 className="text-xl font-medium text-primary">{process.title}</h3>
+                <p className="text-muted-foreground">{process.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
             <Button 
-              variant="outline" 
               size="lg" 
-              className="px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105"
-              onClick={() => onPageChange('Process')}
+              className="text-lg px-8 py-6 bg-accent hover:bg-accent/90 text-accent-foreground"
+              onClick={() => onPageChange('Contact')}
             >
-              Learn Our Process
+              Book Your Free Design Consultation →
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Final Conversion Push */}
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/10">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-primary">
+              Your Dream Space is One Call Away
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+              Every project starts with a conversation. No pressure. No obligation. 
+              Just ideas tailored to you.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+              <Button 
+                size="lg" 
+                className="w-full sm:w-auto text-lg px-8 py-6 bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+                onClick={() => onPageChange('Contact')}
+              >
+                Book Your Free Design Consultation
+              </Button>
+              <button 
+                className="text-primary hover:text-accent transition-colors duration-300 underline"
+                onClick={() => onPageChange('Process')}
+              >
+                See How We Work →
+              </button>
+            </div>
+
+            <div className="pt-8 border-t border-border">
+              <p className="text-sm text-muted-foreground">
+                Serving Hyderabad homeowners & businesses since 2019. 100% client satisfaction guarantee.
+              </p>
+            </div>
           </div>
         </div>
       </section>

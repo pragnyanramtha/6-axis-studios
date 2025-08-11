@@ -85,6 +85,44 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onPageChange }) => {
           </div>
         </div>
 
+        {/* Co-Founder's Note */}
+        <div className="bg-secondary/20 rounded-3xl p-12 md:p-20 mb-20">
+          <div className="grid lg:grid-cols-3 gap-12 items-center">
+            <div className="lg:col-span-1">
+              <img
+                src="https://raw.githubusercontent.com/pragnyanramtha/phoos-/refs/heads/main/WhatsApp%20Image%202025-08-11%20at%2003.39.38_ab43830c.jpg"
+                alt="Sai Charan Raju B - Co-Founder"
+                className="w-64 h-64 object-cover rounded-2xl shadow-xl mx-auto"
+              />
+            </div>
+            
+            <div className="lg:col-span-2 space-y-6">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-black text-primary mb-2">Co-Founder's Note</h2>
+                <div className="text-xl text-gray-600 mb-6">Ar. Sai Charan Raju B.</div>
+              </div>
+              
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <p>
+                  Hello, I'm <strong className="text-primary">Ar. Sai Charan Raju B.</strong>
+                </p>
+                <p>
+                  At Six Axis Studios, every design begins with a story — one that unfolds in every direction of possibility. 
+                  The six axes of space — three positive, three negative — are more than coordinates to us; they are our creative 
+                  compass, guiding us to explore every dimension of design with purpose, imagination, and precision.
+                </p>
+                <p>
+                  I imagine, explore, and experiment; my co-founder grounds these ideas with practical expertise, bringing them 
+                  to life with purpose and detail. Together, we craft experiences that inspire today and endure tomorrow.
+                </p>
+                <div className="text-xl font-medium text-primary italic">
+                  "— Co-Founders, Six Axis Studios"
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Values Section */}
         <div className="mb-20">
           <div className="text-center mb-16">

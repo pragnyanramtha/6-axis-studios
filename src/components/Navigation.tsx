@@ -24,11 +24,11 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChang
       <nav className="bg-white/95 backdrop-blur-xl fixed top-0 left-0 right-0 z-50 border-b border-gray-200/50 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
+            <div className="flex items-center -ml-2">
               <img 
-                src="https://images.pexels.com/photos/33361857/pexels-photo-33361857.png" 
+                src="https://raw.githubusercontent.com/pragnyanramtha/phoos-/refs/heads/main/wide.png" 
                 alt="Six Axis Studios logo" 
-                className="h-10 sm:h-14 w-auto cursor-pointer transition-opacity hover:opacity-80 rounded-[0px]"
+                className="h-6 sm:h-8 w-auto cursor-pointer transition-opacity hover:opacity-80 rounded-[0px]"
                 onClick={() => handlePageChange('Home')}
               />
             </div>

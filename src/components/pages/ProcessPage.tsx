@@ -72,7 +72,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onPageChange }) => {
                     src={`https://images.unsplash.com/photo-${
                       index === 0 ? '1454165804606-c3d57bc86b40' :
                       index === 1 ? '1503387837-b154d5074bd2' :
-                      index === 2 ? '1581291518857-4b93e5aa9aba' :
+                      index === 2 ? '1586023492125-27b2c045efd7' :
                       index === 3 ? '1503594384566-461fe158e797' :
                       index === 4 ? '1504307651254-35680f356dfd' :
                       '1560472354-b33ff0c44a43'
