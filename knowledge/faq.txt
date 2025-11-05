@@ -1,0 +1,22 @@
+FREQUENTLY ASKED QUESTIONS
+
+Q: How do I get started?
+A: Sign up for a free 14-day trial on our website. No credit card required. After signing up, you'll receive a welcome email with setup instructions.
+
+Q: Can I change my plan later?
+A: Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any charges.
+
+Q: What payment methods do you accept?
+A: We accept all major credit cards (Visa, MasterCard, American Express, Discover), PayPal, and wire transfers for Enterprise customers.
+
+Q: Is my data secure?
+A: Absolutely. We use bank-level encryption (AES-256) and are SOC 2 Type II certified. All data is backed up daily.
+
+Q: Do you offer refunds?
+A: Yes, we offer a 30-day money-back guarantee. If you're not satisfied, contact us for a full refund.
+
+Q: Can I cancel anytime?
+A: Yes, you can cancel your subscription at any time. Your access will continue until the end of your billing period.
+
+Q: Do you provide training?
+A: Yes! We offer free onboarding sessions for all new customers and comprehensive documentation. Enterprise customers get dedicated training sessions.
